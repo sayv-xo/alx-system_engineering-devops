@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This script is to display "Best School" 10 times
 # it displays "Hi" on the 9th iteration
 

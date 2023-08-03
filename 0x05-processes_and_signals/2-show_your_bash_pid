@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# displays PID lines that contain bash
-# shellcheck disable=SC2009
-ps -aux | grep bash

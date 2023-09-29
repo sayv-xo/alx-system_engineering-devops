@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# display content of current dir
+
+temp="${PWD}/*"
+for i in $temp ; do
+	basename "$i" | cut -d "-" -f2
+done

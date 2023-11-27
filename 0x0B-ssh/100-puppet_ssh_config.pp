@@ -4,7 +4,7 @@ include stdlib
 file_line { 'disable password auth':
   ensure  => present,
   path    => '/etc/ssh/ssh_config',
-  line    => '    PasswordAuthentication on',
+  line    => '    PasswordAuthentication no',
   replace => true,
 }
 

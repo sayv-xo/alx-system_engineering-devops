@@ -31,5 +31,5 @@ backend   sayv-backend
     balance     roundrobin
     server  69879-web-01 100.25.12.4:80 check
     server  69879-web-02 52.91.127.130:80 check
-"
+" > /etc/haproxy/haproxy.cfg
 sudo service haproxy start

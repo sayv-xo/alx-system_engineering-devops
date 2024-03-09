@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# install and configure haproxy
+sudo apt -y update
+sudo apt -y install haproxy
+echo "ENABLED=1" >> /etc/default/haproxy
+mv /etc/haproxy/haproxy.cfg{,.backup}
+printf %s "global
+    log 127.0.0.1 local2
+    maxconn 4000
+    user haproxy
+    group haproxy
+    daemon
+
+defaults
+    mode                    http
+    log                     global
+    option                  httplog
+    option                  dontlognull
+    retries                 3
+    timeout http-request    10s
+    timeout queue           1m
+    timeout connect         10s
+    timeout client          1m
+    timeout server          1m
+
+frontend  sayv-frontend
+    bind *:80
+    default_backend sayv-backend
+
+backend   sayv-backend
+    balance     roundrobin
+    server  69879-web-01 100.25.12.4:80 check
+    server  69879-web-02 52.91.127.130:80 check
+"
+sudo service haproxy start
